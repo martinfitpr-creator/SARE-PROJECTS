@@ -11,6 +11,7 @@ interface ConsultationModalProps {
 }
 
 const SERVICE_OPTIONS = [
+  'Website Design & Digital Solutions',
   'Business Compliance Services',
   'Research & Transcription Support Services',
   'Proposal & Donor Support Consulting',

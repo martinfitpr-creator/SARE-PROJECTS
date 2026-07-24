@@ -13,7 +13,7 @@ const BLANK_FORM = (initialService = '', initialNotes = '') => ({
   email: '',
   phone: '',
   organization: '',
-  serviceNeeded: initialService || 'Business Compliance Services',
+  serviceNeeded: initialService || 'Website Design & Digital Solutions',
   message: initialNotes || '',
 });
 
@@ -273,6 +273,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ initialService =
                     onChange={(e) => setFormData({ ...formData, serviceNeeded: e.target.value })}
                     className="w-full px-4 py-3.5 bg-white border border-[#E5E7EB] rounded-xl text-sm text-[#111827] focus:outline-hidden focus:border-[#0A2E5C] focus:ring-1 focus:ring-[#0A2E5C]"
                   >
+                    <option value="Website Design & Digital Solutions">Website Design & Digital Solutions</option>
                     <option value="Business Compliance Services">Business Compliance Services (CIPC / Tax)</option>
                     <option value="Research & Transcription Support Services">Research & Transcription Support Services</option>
                     <option value="Proposal & Donor Support Consulting">Proposal & Donor Support Consulting</option>

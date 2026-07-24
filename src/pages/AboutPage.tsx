@@ -41,10 +41,10 @@ export const AboutPage: React.FC<AboutPageProps> = ({
               About Our Practice
             </span>
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-heading font-extrabold text-white leading-tight">
-              Empowering Organizations Through Compliance, Research & Governance
+              Empowering Organisations Through Compliance, Research & Digital Solutions
             </h1>
             <p className="mt-4 text-base sm:text-lg text-slate-200 leading-relaxed font-normal">
-              SARE Projects Solutions is a premier South African consulting firm providing end-to-end statutory compliance filings, academic & development field research, grant proposal preparation, and virtual executive assistant support.
+              SARE Projects Solutions is a premier South African consulting firm providing end-to-end statutory compliance filings, academic & development field research, custom website design & digital solutions, and virtual executive assistant support.
             </p>
           </div>
         </div>
@@ -133,6 +133,10 @@ export const AboutPage: React.FC<AboutPageProps> = ({
 
                 <div className="p-3 bg-white rounded-xl border border-[#E5E7EB] text-xs font-semibold text-[#111827] flex items-center gap-2">
                   <CheckCircle2 className="w-4 h-4 text-[#C9962C]" />
+                  <span>Website Design & Dev</span>
+                </div>
+                <div className="p-3 bg-white rounded-xl border border-[#E5E7EB] text-xs font-semibold text-[#111827] flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-[#C9962C]" />
                   <span>Board Minute Taking</span>
                 </div>
                 <div className="p-3 bg-white rounded-xl border border-[#E5E7EB] text-xs font-semibold text-[#111827] flex items-center gap-2">
@@ -159,7 +163,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({
                 Our Mission
               </h3>
               <p className="text-sm text-[#4B5563] leading-relaxed">
-                To simplify organizational compliance, elevate qualitative research execution, and deliver robust administrative and executive support for South African NGOs, researchers, businesses, and public institutions.
+                To simplify organizational compliance, elevate qualitative research execution, design modern digital/website solutions, and deliver robust administrative and executive support for South African NGOs, researchers, businesses, and public institutions.
               </p>
             </div>
 

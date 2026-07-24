@@ -9,7 +9,8 @@ import {
   ChevronDown,
   CheckCircle2,
   TrendingUp,
-  FileCheck
+  FileCheck,
+  Laptop
 } from 'lucide-react';
 import heroMeetingImg from '../assets/images/hero_corporate_meeting_sare_solutions.png';
 
@@ -25,17 +26,17 @@ export const Hero: React.FC<HeroProps> = ({
   onSelectService
 }) => {
   const trustFeatures = [
-    { title: 'Nationwide', subtitle: 'South Africa', icon: MapPin },
-    { title: 'Compliance', subtitle: 'Specialists', icon: ShieldCheck },
-    { title: 'Professional', subtitle: 'Support', icon: Users },
-    { title: 'Research', subtitle: 'Experts', icon: TrendingUp },
+    { title: 'Compliance', subtitle: 'CIPC & Tax Filings', icon: ShieldCheck },
+    { title: 'Research', subtitle: 'Fieldwork Support', icon: Users },
+    { title: 'Web Design', subtitle: 'Digital Solutions', icon: Laptop },
+    { title: 'Donor Support', subtitle: 'Proposal Consulting', icon: TrendingUp },
   ];
 
   const floatingGlassPills = [
     { label: 'Business Compliance', pos: 'top-24 left-4 sm:left-12' },
     { label: 'Research Support', pos: 'top-32 right-4 sm:right-16' },
-    { label: 'Grant Proposal Support', pos: 'bottom-40 left-6 sm:left-20' },
-    { label: 'Translation Services', pos: 'bottom-36 right-6 sm:right-24' },
+    { label: 'Website Design & Dev', pos: 'bottom-40 left-6 sm:left-20' },
+    { label: 'Grant Proposal Support', pos: 'bottom-36 right-6 sm:right-24' },
   ];
 
   const handleScrollDown = () => {
@@ -90,7 +91,7 @@ export const Hero: React.FC<HeroProps> = ({
           className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#C9962C]/15 border border-[#C9962C]/40 text-[#C9962C] text-2xs sm:text-xs font-bold tracking-widest uppercase mb-6 shadow-sm backdrop-blur-md"
         >
           <ShieldCheck className="w-3.5 h-3.5 text-[#C9962C]" />
-          <span>TRUSTED BUSINESS SUPPORT PARTNER</span>
+          <span>TRUSTED COMPLIANCE, RESEARCH & DIGITAL PARTNER</span>
         </motion.div>
 
         {/* Headline: Max 4 lines, tight letter spacing, gold highlight */}
@@ -104,7 +105,7 @@ export const Hero: React.FC<HeroProps> = ({
           <span className="text-[#C9962C] font-extrabold">
             Compliance
           </span>
-          , Research & Strategic Growth.
+          , Research & Digital Solutions.
         </motion.h1>
 
         {/* Subtitle Paragraph */}
@@ -114,7 +115,7 @@ export const Hero: React.FC<HeroProps> = ({
           transition={{ duration: 0.7, delay: 0.3 }}
           className="mt-5 text-sm sm:text-base md:text-lg text-slate-200 leading-relaxed font-normal max-w-2xl"
         >
-          We help NGOs, government institutions, donor-funded organisations and businesses simplify compliance, strengthen operations and deliver meaningful impact through expert consulting and administrative support.
+          We help NGOs, government institutions, donor-funded organisations and businesses simplify compliance, strengthen operations, and deliver meaningful impact through custom website development and expert consulting.
         </motion.p>
 
         {/* CTA Buttons - Large 56px Tall Rounded Buttons */}

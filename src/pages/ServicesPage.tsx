@@ -14,7 +14,8 @@ import {
   FileText, 
   Sparkles,
   Search,
-  X
+  X,
+  Laptop
 } from 'lucide-react';
 import { SERVICES, COMPANY_INFO } from '../data/consultingData';
 import { ServiceItem } from '../types';
@@ -31,7 +32,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({
   const [activeModalService, setActiveModalService] = useState<ServiceItem | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
 
-  const categories = ['All', 'Regulatory & Governance', 'Research & Fieldwork', 'Grants & Funding', 'Executive Operations', 'Localization & Communication', 'Data Science & Insights'];
+  const categories = ['All', 'Digital Solutions', 'Regulatory & Governance', 'Research & Fieldwork', 'Grants & Funding', 'Executive Operations', 'Localization & Communication', 'Data Science & Insights'];
 
   const filteredServices = SERVICES.filter((service) => {
     const matchesCategory = selectedCategory === 'All' || service.category === selectedCategory;
@@ -42,6 +43,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({
 
   const getIcon = (iconName: string) => {
     switch (iconName) {
+      case 'Laptop': return <Laptop className="w-6 h-6 text-[#C9962C]" />;
       case 'ShieldCheck': return <ShieldCheck className="w-6 h-6 text-[#C9962C]" />;
       case 'FileSpreadsheet': return <FileSpreadsheet className="w-6 h-6 text-[#C9962C]" />;
       case 'Briefcase': return <Briefcase className="w-6 h-6 text-[#C9962C]" />;

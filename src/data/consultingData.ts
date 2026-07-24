@@ -5,9 +5,9 @@ import { ServiceItem, IndustryItem, TestimonialItem, FAQItem, ValueItem, Process
 
 export const COMPANY_INFO = {
   name: "SARE Projects Solutions",
-  tagline: "Your Partner in Compliance, Research and Sustainable Impact",
-  slogan: "Empowering Organizations Through Compliance, Research & Strategic Growth",
-  description: "SARE Projects Solutions provides comprehensive business, research, compliance and administrative solutions tailored to help organisations grow.",
+  tagline: "Your Partner in Compliance, Research and Digital Solutions",
+  slogan: "Empowering Organisations Through Compliance, Research & Digital Solutions",
+  description: "SARE Projects Solutions provides comprehensive business compliance, research support, and custom website design and digital solutions.",
   director: {
     name: "Regina Rikhotso",
     title: "Director & Founder",
@@ -32,6 +32,31 @@ export const COMPANY_INFO = {
 };
 
 export const SERVICES: ServiceItem[] = [
+  {
+    id: "website-design",
+    title: "Website Design & Digital Solutions",
+    category: "Digital Solutions",
+    iconName: "Laptop",
+    shortDesc: "We design modern websites that help businesses establish a professional online presence, generate more leads, automate daily operations, and grow with confidence. Every website is custom-built to match your brand, industry, and business goals.",
+    fullDesc: "Establishing a strong digital presence is crucial for modern organisations. SARE Projects Solutions designs and develops premium, custom websites, e-commerce stores, client portals, and donation platforms that streamline your operations and engage stakeholders. We integrate secure payment gateways (PayFast, Yoco, Paystack, Peach Payments, Ozow) and deploy automated workflows, support chatbots, and CRM connections to turn your website into a growth engine.",
+    benefits: [
+      "Custom-built websites matching your brand and business goals",
+      "Fully responsive, SEO-optimised, and lightning-fast performance",
+      "Integrated South African & international payment gateways",
+      "Workflow automations and customer support chatbots"
+    ],
+    deliverables: [
+      "Custom Website Design (Corporate, NGO, E-commerce, Portfolio)",
+      "Payment Gateway Integration (PayFast, Yoco, Peach, Paystack, PayPal)",
+      "Lead Generation & Contact Forms with Email Notifications",
+      "Smart Support Chatbots & WhatsApp Integration",
+      "Client & Member Portals, Donation Platforms & Event Registrations",
+      "Search Engine Optimisation (SEO) & Google Maps Integration",
+      "Secure Hosting Setup, Domain Configurations & Ongoing Maintenance",
+      "Workflow Automations & CRM Integration"
+    ],
+    targetClients: ["NGOs & NPOs", "Small & Medium Businesses (SMEs)", "Corporate Companies", "Law Firms", "Healthcare Providers", "Schools & Institutions", "Startups"]
+  },
   {
     id: "business-compliance",
     title: "Business Compliance Services",
