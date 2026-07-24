@@ -197,6 +197,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({
                     Submit Another Inquiry
                   </button>
                 </div>
+              ) : (
                 <form
                   name="contact-page"
                   method="POST"
