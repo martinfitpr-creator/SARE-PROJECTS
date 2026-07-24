@@ -33,7 +33,7 @@ const Counter: React.FC<{ value: number; suffix: string }> = ({ value, suffix })
   const displayValue = value % 1 !== 0 ? count.toFixed(1) : Math.floor(count);
 
   return (
-    <span ref={ref} className="font-heading font-extrabold text-3xl sm:text-4xl lg:text-5xl text-white">
+    <span ref={ref} className="font-heading font-extrabold text-xl sm:text-2xl lg:text-3xl text-white">
       {displayValue}
       {suffix}
     </span>
@@ -42,12 +42,12 @@ const Counter: React.FC<{ value: number; suffix: string }> = ({ value, suffix })
 
 export const Statistics: React.FC = () => {
   return (
-    <section className="py-16 sm:py-20 bg-[#0A2E5C] text-white relative overflow-hidden">
+    <section className="py-8 sm:py-10 bg-[#0A2E5C] text-white relative overflow-hidden">
       {/* Decorative background grid */}
       <div className="absolute inset-0 bg-[radial-gradient(#C9962C_1px,transparent_1px)] [background-size:24px_24px] opacity-10"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 text-center">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 text-center">
           {STATS.map((stat, idx) => (
             <motion.div
               key={idx}
@@ -55,13 +55,13 @@ export const Statistics: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: idx * 0.1 }}
-              className="p-4 rounded-2xl bg-white/5 backdrop-blur-xs border border-white/10 hover:border-[#C9962C]/40 transition-all"
+              className="p-3 rounded-xl bg-white/5 backdrop-blur-xs border border-white/10 hover:border-[#C9962C]/40 transition-all"
             >
               <Counter value={stat.value} suffix={stat.suffix} />
-              <div className="mt-2 text-xs font-bold text-[#C9962C] uppercase tracking-wider">
+              <div className="mt-1 text-2xs font-bold text-[#C9962C] uppercase tracking-wider leading-tight">
                 {stat.label}
               </div>
-              <div className="mt-1 text-3xs text-white/70">
+              <div className="mt-0.5 text-3xs text-white/60 leading-snug">
                 {stat.detail}
               </div>
             </motion.div>

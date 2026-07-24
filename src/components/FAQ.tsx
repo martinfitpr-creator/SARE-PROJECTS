@@ -19,12 +19,6 @@ export const FAQ: React.FC = () => {
           <span className="text-xs font-semibold uppercase tracking-widest text-[#C9962C] bg-[#C9962C]/10 px-3.5 py-1.5 rounded-full">
             Frequently Asked Questions
           </span>
-          <h2 className="text-3xl sm:text-4xl font-heading font-extrabold text-[#111827]">
-            Clear Answers to Common Questions
-          </h2>
-          <p className="text-base text-[#6B7280]">
-            Everything you need to know about our compliance filings, research execution, and engagement models.
-          </p>
         </div>
 
         {/* Accordion List */}

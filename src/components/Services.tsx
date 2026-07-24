@@ -43,7 +43,7 @@ export const Services: React.FC<ServicesProps> = ({ onBookConsultation }) => {
         </div>
 
         {/* Services Grid (Large Premium Cards) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {SERVICES.map((service, index) => (
             <motion.div
               key={service.id}
@@ -52,7 +52,7 @@ export const Services: React.FC<ServicesProps> = ({ onBookConsultation }) => {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.08 }}
               whileHover={{ y: -6, transition: { duration: 0.2 } }}
-              className="group relative bg-[#F8FAFC] hover:bg-white rounded-2xl p-7 sm:p-8 border border-[#E5E7EB] hover:border-[#0A2E5C]/30 shadow-2xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between overflow-hidden cursor-pointer"
+              className="group relative bg-[#F8FAFC] hover:bg-white rounded-2xl p-5 border border-[#E5E7EB] hover:border-[#0A2E5C]/30 shadow-2xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between overflow-hidden cursor-pointer"
               onClick={() => setSelectedService(service)}
             >
               {/* Subtle Gold Accent Line at Top */}
@@ -60,28 +60,31 @@ export const Services: React.FC<ServicesProps> = ({ onBookConsultation }) => {
 
               <div>
                 {/* Icon & Category Header */}
-                <div className="flex items-center justify-between mb-6">
-                  <div className="w-12 h-12 rounded-xl bg-white group-hover:bg-[#0A2E5C]/10 border border-[#E5E7EB] flex items-center justify-center transition-colors">
+                <div className="flex items-center justify-between mb-4">
+                  <div className="w-9 h-9 rounded-lg bg-white group-hover:bg-[#0A2E5C]/10 border border-[#E5E7EB] flex items-center justify-center transition-colors">
                     {getServiceIcon(service.iconName)}
                   </div>
-                  <span className="text-2xs font-semibold uppercase tracking-wider text-[#6B7280] bg-white px-2.5 py-1 rounded-md border border-[#E5E7EB]">
+                  <span className="text-2xs font-semibold uppercase tracking-wider text-[#6B7280] bg-white px-2 py-0.5 rounded-md border border-[#E5E7EB]">
                     {service.category}
                   </span>
                 </div>
 
                 {/* Service Title */}
-                <h3 className="text-[22px] md:text-[32px] font-heading font-bold text-[#0F2746] mb-5 transition-colors leading-tight">
+                <h3 className="text-base md:text-lg font-heading font-bold text-[#0F2746] mb-3 transition-colors leading-tight">
                   {service.title}
                 </h3>
 
                 {/* Service Items (Deliverables) */}
-                <div className="space-y-3 mb-8">
-                  {service.deliverables.map((item, idx) => (
-                    <div key={idx} className="flex items-start gap-2 text-[15px] md:text-[16px] font-body font-normal text-[#111827]">
-                      <CheckCircle2 className="w-4 h-4 text-[#C9962C] shrink-0 mt-1" />
+                <div className="space-y-1.5 mb-4">
+                  {service.deliverables.slice(0, 4).map((item, idx) => (
+                    <div key={idx} className="flex items-start gap-2 text-xs font-body font-normal text-[#111827]">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-[#C9962C] shrink-0 mt-0.5" />
                       <span>{item}</span>
                     </div>
                   ))}
+                  {service.deliverables.length > 4 && (
+                    <p className="text-2xs text-[#6B7280] pl-5">+ {service.deliverables.length - 4} more...</p>
+                  )}
                 </div>
               </div>
 

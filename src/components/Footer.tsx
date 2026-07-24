@@ -100,6 +100,21 @@ export const Footer: React.FC<FooterProps> = ({ onNavigatePage }) => {
             </ul>
           </div>
 
+          {/* Column 4: Careers */}
+          <div>
+            <h4 className="text-xs font-bold uppercase tracking-widest text-[#C9962C] mb-4">
+              Careers
+            </h4>
+            <p className="text-xs text-white/70 leading-relaxed mb-3">
+              We are always looking for passionate, skilled professionals to join our growing team.
+            </p>
+            <div className="flex items-center gap-2 bg-white/5 border border-white/10 rounded-xl px-3 py-2.5">
+              <span className="w-2 h-2 rounded-full bg-[#C9962C] shrink-0 animate-pulse"></span>
+              <span className="text-xs text-white/60 italic">No open positions at this time.</span>
+            </div>
+            <p className="text-2xs text-white/40 mt-2">Check back soon — we're growing!</p>
+          </div>
+
           {/* Column 4: Contact & Direct Inquiries */}
           <div>
             <h4 className="text-xs font-bold uppercase tracking-widest text-[#C9962C] mb-4">
