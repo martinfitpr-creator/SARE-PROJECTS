@@ -45,11 +45,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled || !isHomePage
-            ? 'bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm py-3'
-            : 'bg-white py-4 sm:py-5'
-        }`}
+        className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white border-b border-gray-100 shadow-xs py-4 sm:py-5"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between">

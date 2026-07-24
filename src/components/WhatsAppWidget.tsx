@@ -18,7 +18,7 @@ export const WhatsAppWidget: React.FC = () => {
   ];
 
   const handleStartChat = () => {
-    const baseMessage = `Hello SARE Projects Solutions,\n\nI would like to inquire about: *${selectedTopic}*.`;
+    const baseMessage = `Hello Sare Projects Solutions,\n\nI would like to inquire about: *${selectedTopic}*.`;
     const fullText = customText ? `${baseMessage}\n\nNote: ${customText}` : baseMessage;
     const encoded = encodeURIComponent(fullText);
     const url = `https://wa.me/27719506936?text=${encoded}`;
