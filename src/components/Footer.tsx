@@ -2,6 +2,7 @@ import React from 'react';
 import { Phone, Mail, MapPin, Linkedin, Facebook, Twitter, MessageSquare } from 'lucide-react';
 import { COMPANY_INFO, SERVICES, INDUSTRIES } from '../data/consultingData';
 import { WhatsAppIcon } from './icons/WhatsAppIcon';
+import logoDark from '../assets/images/logo_dark_bg.png';
 
 interface FooterProps {
   onNavigatePage?: (page: string) => void;
@@ -29,7 +30,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigatePage }) => {
               className="flex items-center gap-2 text-left cursor-pointer"
             >
               <img
-                src="/src/assets/images/logo_dark_bg.png"
+                src={logoDark}
                 alt="SARE Projects Solutions Logo"
                 loading="lazy"
                 className="h-16 w-auto object-contain mix-blend-lighten opacity-95 hover:opacity-100 transition-opacity"
