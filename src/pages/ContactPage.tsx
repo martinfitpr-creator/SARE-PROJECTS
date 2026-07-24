@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { 
   Phone, 
   Mail, 
@@ -6,10 +6,8 @@ import {
   Clock, 
   Send, 
   CheckCircle2, 
-  Calculator, 
   Calendar,
   MessageSquare,
-  Paperclip,
   ArrowRight
 } from 'lucide-react';
 import { COMPANY_INFO, SERVICES } from '../data/consultingData';
@@ -21,30 +19,55 @@ interface ContactPageProps {
   initialNotes?: string;
 }
 
+const BLANK_FORM = (initialService = 'Business Compliance Services', initialNotes = '') => ({
+  name: '',
+  email: '',
+  phone: '',
+  organization: '',
+  serviceInterest: initialService,
+  message: initialNotes,
+});
+
 export const ContactPage: React.FC<ContactPageProps> = ({
   onBookConsultation,
   initialService = 'Business Compliance Services',
   initialNotes = ''
 }) => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    organization: '',
-    serviceInterest: initialService,
-    preferredDate: '',
-    timeSlot: '10:00 AM SAST',
-    message: initialNotes,
-  });
-
+  const [formData, setFormData] = useState(BLANK_FORM(initialService, initialNotes));
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const iframeRef = useRef<HTMLIFrameElement>(null);
 
+  // Fires when the iframe loads — means the POST completed
+  const handleIframeLoad = () => {
+    if (submitting) {
+      setSubmitting(false);
+      setSubmitted(true);
+    }
+  };
+
+  // Marks we're about to submit; does NOT prevent the native POST
   const handleSubmit = () => {
-    setSubmitted(true);
+    setSubmitting(true);
+  };
+
+  const handleReset = () => {
+    setSubmitted(false);
+    setSubmitting(false);
+    setFormData(BLANK_FORM());
   };
 
   return (
     <div className="pb-20 bg-[#F8FAFC]">
+      {/* Component-local hidden iframe — catches the POST response without page reload */}
+      <iframe
+        ref={iframeRef}
+        name="contact-page-frame"
+        title="contact-page-submit-frame"
+        onLoad={handleIframeLoad}
+        style={{ display: 'none' }}
+      />
+
       {/* Header Banner */}
       <section className="bg-[#0A2E5C] text-white pt-28 sm:pt-32 pb-16 sm:pb-20 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -191,7 +214,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({
                     Thank you, <span className="font-bold text-[#111827]">{formData.name}</span>. A senior consultant from SARE Projects Solutions will contact you within 24 hours at <span className="font-bold text-[#111827]">{formData.email}</span>.
                   </p>
                   <button
-                    onClick={() => setSubmitted(false)}
+                    onClick={handleReset}
                     className="px-6 py-2.5 bg-[#0A2E5C] text-white text-xs font-bold rounded-xl"
                   >
                     Submit Another Inquiry
@@ -202,12 +225,14 @@ export const ContactPage: React.FC<ContactPageProps> = ({
                   name="contact-page"
                   method="POST"
                   action="/"
-                  target="netlify-hidden-iframe"
+                  target="contact-page-frame"
                   data-netlify="true"
+                  netlify
                   onSubmit={handleSubmit}
                   className="space-y-5"
                 >
                   <input type="hidden" name="form-name" value="contact-page" />
+
                   <div>
                     <h3 className="text-xl font-heading font-bold text-[#111827]">
                       Request Executive Consultation or Proposal
@@ -314,10 +339,11 @@ export const ContactPage: React.FC<ContactPageProps> = ({
 
                   <button
                     type="submit"
-                    className="w-full py-4 bg-[#C9962C] hover:bg-[#b08223] text-white font-bold text-xs rounded-xl shadow-md flex items-center justify-center gap-2 cursor-pointer transition-transform hover:-translate-y-0.5"
+                    disabled={submitting}
+                    className="w-full py-4 bg-[#C9962C] hover:bg-[#b08223] disabled:opacity-70 text-white font-bold text-xs rounded-xl shadow-md flex items-center justify-center gap-2 cursor-pointer transition-transform hover:-translate-y-0.5"
                   >
-                    <span>Submit Executive Consultation Request</span>
-                    <Send className="w-4 h-4" />
+                    <span>{submitting ? 'Submitting...' : 'Submit Executive Consultation Request'}</span>
+                    {!submitting && <Send className="w-4 h-4" />}
                   </button>
                 </form>
               )}

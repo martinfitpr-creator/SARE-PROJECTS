@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { X, Calendar, ArrowRight, CheckCircle2 } from 'lucide-react';
-import { COMPANY_INFO } from '../data/consultingData';
 import { WhatsAppIcon } from './icons/WhatsAppIcon';
 
 interface ConsultationModalProps {
@@ -26,16 +25,9 @@ const BLANK_FORM = (presetService = '', presetNotes = '') => ({
   name: '',
   email: '',
   phone: '',
-  preferredDate: '',
   serviceRequired: presetService || '',
   message: presetNotes || '',
 });
-
-function encode(data: Record<string, string>) {
-  return Object.keys(data)
-    .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
-    .join('&');
-}
 
 export const ConsultationModal: React.FC<ConsultationModalProps> = ({
   isOpen,
@@ -46,18 +38,27 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
   const [formData, setFormData] = useState(BLANK_FORM(presetService, presetNotes));
   const [booked, setBooked] = useState(false);
   const [submitting, setSubmitting] = useState(false);
-  const [error, setError] = useState('');
+  const iframeRef = useRef<HTMLIFrameElement>(null);
 
   if (!isOpen) return null;
 
+  // Called when the hidden iframe loads — signals that the POST completed
+  const handleIframeLoad = () => {
+    if (submitting) {
+      setSubmitting(false);
+      setBooked(true);
+    }
+  };
+
+  // Called when the submit button is clicked — marks us as "about to submit"
   const handleSubmit = () => {
-    setBooked(true);
+    setSubmitting(true);
   };
 
   const handleBookAgain = () => {
     setFormData(BLANK_FORM());
     setBooked(false);
-    setError('');
+    setSubmitting(false);
   };
 
   const handleWhatsAppDirect = () => {
@@ -82,6 +83,15 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
           exit={{ opacity: 0, scale: 0.95, y: 20 }}
           className="relative bg-white rounded-3xl shadow-2xl border border-[#E5E7EB] max-w-xl w-full p-6 sm:p-8 z-10 max-h-[90vh] overflow-y-auto"
         >
+          {/* Hidden iframe — catches the form POST without reloading the page */}
+          <iframe
+            ref={iframeRef}
+            name="consultation-frame"
+            title="consultation-submit-frame"
+            onLoad={handleIframeLoad}
+            style={{ display: 'none' }}
+          />
+
           <button
             onClick={onClose}
             className="absolute top-6 right-6 p-2 rounded-full text-[#6B7280] hover:text-[#111827] hover:bg-[#F8FAFC]"
@@ -125,17 +135,18 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
               </div>
             </div>
           ) : (
-            /* ── Booking Form ── */
+            /* ── Booking Form — standard HTML POST to local iframe ── */
             <form
               name="consultation"
               method="POST"
               action="/"
-              target="netlify-hidden-iframe"
+              target="consultation-frame"
               data-netlify="true"
+              netlify
               onSubmit={handleSubmit}
               className="space-y-5"
             >
-              {/* Required hidden field for Netlify */}
+              {/* Required for Netlify bot detection */}
               <input type="hidden" name="form-name" value="consultation" />
 
               {/* Header */}
@@ -258,10 +269,11 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
 
                 <button
                   type="submit"
-                  className="w-full py-3.5 bg-[#C9962C] hover:bg-[#b08223] text-white font-bold text-xs rounded-xl shadow-md flex items-center justify-center gap-2 cursor-pointer transition-transform hover:-translate-y-0.5"
+                  disabled={submitting}
+                  className="w-full py-3.5 bg-[#C9962C] hover:bg-[#b08223] disabled:opacity-70 text-white font-bold text-xs rounded-xl shadow-md flex items-center justify-center gap-2 cursor-pointer transition-transform hover:-translate-y-0.5"
                 >
-                  <span>Confirm Consultation Request</span>
-                  <ArrowRight className="w-4 h-4" />
+                  <span>{submitting ? 'Submitting...' : 'Confirm Consultation Request'}</span>
+                  {!submitting && <ArrowRight className="w-4 h-4" />}
                 </button>
               </div>
             </form>

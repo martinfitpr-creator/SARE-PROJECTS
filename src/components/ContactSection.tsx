@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { motion } from 'motion/react';
 import { Phone, Mail, MapPin, Send, CheckCircle2, Clock } from 'lucide-react';
 import { COMPANY_INFO } from '../data/consultingData';
@@ -8,25 +8,51 @@ interface ContactSectionProps {
   initialNotes?: string;
 }
 
+const BLANK_FORM = (initialService = '', initialNotes = '') => ({
+  fullName: '',
+  email: '',
+  phone: '',
+  organization: '',
+  serviceNeeded: initialService || 'Business Compliance Services',
+  message: initialNotes || '',
+});
+
 export const ContactSection: React.FC<ContactSectionProps> = ({ initialService = '', initialNotes = '' }) => {
-  const [formData, setFormData] = useState({
-    fullName: '',
-    email: '',
-    phone: '',
-    organization: '',
-    serviceNeeded: initialService || 'Business Compliance Services',
-    message: initialNotes || '',
-  });
-
+  const [formData, setFormData] = useState(BLANK_FORM(initialService, initialNotes));
   const [submitted, setSubmitted] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const iframeRef = useRef<HTMLIFrameElement>(null);
 
+  // Fires when the hidden iframe loads — meaning the POST completed successfully
+  const handleIframeLoad = () => {
+    if (submitting) {
+      setSubmitting(false);
+      setSubmitted(true);
+    }
+  };
+
+  // Runs just before the browser fires the POST — marks us as "submitting"
   const handleSubmit = () => {
-    setSubmitted(true);
+    setSubmitting(true);
+  };
+
+  const handleReset = () => {
+    setSubmitted(false);
+    setSubmitting(false);
+    setFormData(BLANK_FORM());
   };
 
   return (
     <section id="contact" className="py-20 sm:py-28 bg-white relative">
+      {/* Component-local hidden iframe — catches the POST response without page reload */}
+      <iframe
+        ref={iframeRef}
+        name="contact-section-frame"
+        title="contact-section-submit-frame"
+        onLoad={handleIframeLoad}
+        style={{ display: 'none' }}
+      />
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
@@ -44,7 +70,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ initialService =
                 Get In Touch
               </span>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-extrabold text-[#111827] leading-tight">
-                Let’s Discuss Your Compliance & Research Needs
+                Let's Discuss Your Compliance & Research Needs
               </h2>
               <p className="text-base text-[#6B7280] leading-relaxed">
                 Reach out to Director Regina Rikhotso and our senior consulting team for immediate advice, project quotations, or customized compliance retainers.
@@ -114,7 +140,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ initialService =
 
             </div>
 
-            {/* Turnaround Guarantee Note */}
+            {/* Turnaround Note */}
             <div className="p-4 rounded-xl bg-[#0A2E5C]/5 border border-[#0A2E5C]/15 flex items-center gap-3 text-xs text-[#0A2E5C] font-semibold">
               <Clock className="w-4 h-4 text-[#C9962C] shrink-0" />
               <span>We respond to all formal inquiries within 2–4 business hours.</span>
@@ -122,7 +148,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ initialService =
 
           </motion.div>
 
-          {/* Right Column: Minimal Form */}
+          {/* Right Column: Form */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -142,17 +168,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ initialService =
                   Thank you for reaching out to SARE Projects Solutions. Our team will review your requirements and send a formal proposal to <span className="font-semibold text-[#111827]">{formData.email}</span> shortly.
                 </p>
                 <button
-                  onClick={() => {
-                    setSubmitted(false);
-                    setFormData({
-                      fullName: '',
-                      email: '',
-                      phone: '',
-                      organization: '',
-                      serviceNeeded: 'Business Compliance Services',
-                      message: '',
-                    });
-                  }}
+                  onClick={handleReset}
                   className="px-6 py-2.5 bg-[#0A2E5C] text-white text-xs font-semibold rounded-xl hover:bg-[#061e3d] transition-colors"
                 >
                   Send Another Inquiry
@@ -163,12 +179,14 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ initialService =
                 name="contact-section"
                 method="POST"
                 action="/"
-                target="netlify-hidden-iframe"
+                target="contact-section-frame"
                 data-netlify="true"
+                netlify
                 onSubmit={handleSubmit}
                 className="space-y-6"
               >
                 <input type="hidden" name="form-name" value="contact-section" />
+
                 <div>
                   <h3 className="text-2xl font-heading font-bold text-[#111827] mb-1">
                     Send a Message
@@ -256,12 +274,12 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ initialService =
                     className="w-full px-4 py-3.5 bg-white border border-[#E5E7EB] rounded-xl text-sm text-[#111827] focus:outline-hidden focus:border-[#0A2E5C] focus:ring-1 focus:ring-[#0A2E5C]"
                   >
                     <option value="Business Compliance Services">Business Compliance Services (CIPC / Tax)</option>
-                    <option value="Research &amp; Transcription Support Services">Research &amp; Transcription Support Services</option>
-                    <option value="Proposal &amp; Donor Support Consulting">Proposal &amp; Donor Support Consulting</option>
+                    <option value="Research & Transcription Support Services">Research & Transcription Support Services</option>
+                    <option value="Proposal & Donor Support Consulting">Proposal & Donor Support Consulting</option>
                     <option value="Virtual Executive Assistant Services">Virtual Executive Assistant Services</option>
                     <option value="Translation Services">Translation Services (SA Official Languages)</option>
                     <option value="Qualitative Data Analysis Support">Qualitative Data Analysis Support (NVivo)</option>
-                    <option value="Community Engagement &amp; Fieldwork Coordination">Community Engagement &amp; Fieldwork</option>
+                    <option value="Community Engagement & Fieldwork Coordination">Community Engagement & Fieldwork</option>
                     <option value="Custom Retainer / Other">Custom Retainer / Comprehensive Package</option>
                   </select>
                 </div>
@@ -281,13 +299,14 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ initialService =
                   ></textarea>
                 </div>
 
-                {/* Gold Submit Button */}
+                {/* Submit Button */}
                 <button
                   type="submit"
-                  className="w-full py-4 bg-[#C9962C] hover:bg-[#b08223] text-white font-bold text-base rounded-xl shadow-md transition-all duration-200 transform hover:-translate-y-0.5 flex items-center justify-center gap-2.5 cursor-pointer"
+                  disabled={submitting}
+                  className="w-full py-4 bg-[#C9962C] hover:bg-[#b08223] disabled:opacity-70 text-white font-bold text-base rounded-xl shadow-md transition-all duration-200 transform hover:-translate-y-0.5 flex items-center justify-center gap-2.5 cursor-pointer"
                 >
-                  <span>Submit Inquiry</span>
-                  <Send className="w-4 h-4" />
+                  <span>{submitting ? 'Submitting...' : 'Submit Inquiry'}</span>
+                  {!submitting && <Send className="w-4 h-4" />}
                 </button>
               </form>
             )}
