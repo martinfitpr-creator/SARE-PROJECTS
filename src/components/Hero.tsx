@@ -12,7 +12,7 @@ import {
   FileCheck,
   Laptop
 } from 'lucide-react';
-import heroMeetingImg from '../assets/images/hero_corporate_meeting_sare_solutions.png';
+import heroMeetingImg from '../assets/images/hero_corporate_meeting_sare_solutions.webp';
 
 interface HeroProps {
   onBookConsultation: () => void;

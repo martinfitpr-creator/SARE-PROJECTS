@@ -19,7 +19,7 @@ import {
   Briefcase
 } from 'lucide-react';
 import { COMPANY_INFO, VALUES } from '../data/consultingData';
-import directorImg from '../assets/images/regina_new.png';
+import directorImg from '../assets/images/regina_new.webp';
 
 interface AboutPageProps {
   onBookConsultation: () => void;

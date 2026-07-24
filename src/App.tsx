@@ -1,20 +1,29 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
-import { HomePage } from './pages/HomePage';
-import { AboutPage } from './pages/AboutPage';
-import { ServicesPage } from './pages/ServicesPage';
-import { IndustriesPage } from './pages/IndustriesPage';
-import { WhyUsPage } from './pages/WhyUsPage';
-import { ContactPage } from './pages/ContactPage';
 import { ConsultationModal } from './components/ConsultationModal';
 import { WhatsAppWidget } from './components/WhatsAppWidget';
+
+const HomePage = React.lazy(() => import('./pages/HomePage').then(module => ({ default: module.HomePage })));
+const AboutPage = React.lazy(() => import('./pages/AboutPage').then(module => ({ default: module.AboutPage })));
+const ServicesPage = React.lazy(() => import('./pages/ServicesPage').then(module => ({ default: module.ServicesPage })));
+const IndustriesPage = React.lazy(() => import('./pages/IndustriesPage').then(module => ({ default: module.IndustriesPage })));
+const ContactPage = React.lazy(() => import('./pages/ContactPage').then(module => ({ default: module.ContactPage })));
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState<string>('home');
   const [bookingModalOpen, setBookingModalOpen] = useState(false);
-  const [selectedServiceForBooking, setSelectedServiceForBooking] = useState('Business Compliance Services');
+  const [selectedServiceForBooking, setSelectedServiceForBooking] = useState('Website Design & Digital Solutions');
   const [customBookingNotes, setCustomBookingNotes] = useState('');
+  const [showWhatsApp, setShowWhatsApp] = useState(false);
+
+  useEffect(() => {
+    // Defer non-critical widget load for Lighthouse TBT/TTI improvements
+    const timer = setTimeout(() => {
+      setShowWhatsApp(true);
+    }, 2500);
+    return () => clearTimeout(timer);
+  }, []);
 
   // Handle URL Hash sync for multi-page deep linking
   useEffect(() => {
@@ -57,43 +66,47 @@ export default function App() {
 
         {/* Dynamic Page Rendering */}
         <main>
-          {currentPage === 'home' && (
-            <HomePage
-              onBookConsultation={handleOpenBooking}
-              onNavigatePage={handleNavigatePage}
-            />
-          )}
+          <Suspense fallback={
+            <div className="min-h-[60vh] bg-white flex items-center justify-center">
+              <div className="w-8 h-8 border-4 border-[#0A2E5C] border-t-transparent rounded-full animate-spin"></div>
+            </div>
+          }>
+            {currentPage === 'home' && (
+              <HomePage
+                onBookConsultation={handleOpenBooking}
+                onNavigatePage={handleNavigatePage}
+              />
+            )}
 
-          {currentPage === 'about' && (
-            <AboutPage
-              onBookConsultation={() => handleOpenBooking()}
-              onNavigatePage={handleNavigatePage}
-            />
-          )}
+            {currentPage === 'about' && (
+              <AboutPage
+                onBookConsultation={() => handleOpenBooking()}
+                onNavigatePage={handleNavigatePage}
+              />
+            )}
 
-          {currentPage === 'services' && (
-            <ServicesPage
-              onBookConsultation={handleOpenBooking}
-              onNavigatePage={handleNavigatePage}
-            />
-          )}
+            {currentPage === 'services' && (
+              <ServicesPage
+                onBookConsultation={handleOpenBooking}
+                onNavigatePage={handleNavigatePage}
+              />
+            )}
 
-          {currentPage === 'industries' && (
-            <IndustriesPage
-              onBookConsultation={handleOpenBooking}
-              onNavigatePage={handleNavigatePage}
-            />
-          )}
+            {currentPage === 'industries' && (
+              <IndustriesPage
+                onBookConsultation={handleOpenBooking}
+                onNavigatePage={handleNavigatePage}
+              />
+            )}
 
-
-
-          {currentPage === 'contact' && (
-            <ContactPage
-              onBookConsultation={handleOpenBooking}
-              initialService={selectedServiceForBooking}
-              initialNotes={customBookingNotes}
-            />
-          )}
+            {currentPage === 'contact' && (
+              <ContactPage
+                onBookConsultation={handleOpenBooking}
+                initialService={selectedServiceForBooking}
+                initialNotes={customBookingNotes}
+              />
+            )}
+          </Suspense>
         </main>
       </div>
 
@@ -109,7 +122,7 @@ export default function App() {
       />
 
       {/* Floating WhatsApp Business Chat Widget */}
-      <WhatsAppWidget />
+      {showWhatsApp && <WhatsAppWidget />}
     </div>
   );
 }

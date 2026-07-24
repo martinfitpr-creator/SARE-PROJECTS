@@ -1,6 +1,6 @@
-import logoImg from '../assets/images/logo_white_bg.png';
-import directorImg from '../assets/images/regina_new.png';
-import heroImg from '../assets/images/consulting_hero_1784895749201.jpg';
+import logoImg from '../assets/images/logo_white_bg.webp';
+import directorImg from '../assets/images/regina_new.webp';
+import heroImg from '../assets/images/consulting_hero_1784895749201.webp';
 import { ServiceItem, IndustryItem, TestimonialItem, FAQItem, ValueItem, ProcessStep } from '../types';
 
 export const COMPANY_INFO = {

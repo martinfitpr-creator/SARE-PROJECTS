@@ -2,7 +2,7 @@ import React from 'react';
 import { Phone, Mail, MapPin, Linkedin, Facebook, Twitter, MessageSquare } from 'lucide-react';
 import { COMPANY_INFO, SERVICES, INDUSTRIES } from '../data/consultingData';
 import { WhatsAppIcon } from './icons/WhatsAppIcon';
-import logoDark from '../assets/images/logo_dark_bg.png';
+import logoDark from '../assets/images/logo_dark_bg.webp';
 
 interface FooterProps {
   onNavigatePage?: (page: string) => void;
