@@ -50,31 +50,8 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
 
   if (!isOpen) return null;
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setSubmitting(true);
-    setError('');
-
-    try {
-      await fetch('/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: encode({
-          'form-name': 'consultation',
-          name: formData.name,
-          email: formData.email,
-          phone: formData.phone,
-          'preferred-date': formData.preferredDate,
-          'service-required': formData.serviceRequired,
-          message: formData.message,
-        }),
-      });
-      setBooked(true);
-    } catch {
-      setError('Something went wrong. Please try again or use WhatsApp below.');
-    } finally {
-      setSubmitting(false);
-    }
+  const handleSubmit = () => {
+    setBooked(true);
   };
 
   const handleBookAgain = () => {
@@ -152,6 +129,8 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
             <form
               name="consultation"
               method="POST"
+              action="/"
+              target="netlify-hidden-iframe"
               data-netlify="true"
               onSubmit={handleSubmit}
               className="space-y-5"
@@ -243,37 +222,23 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
                   </div>
                 </div>
 
-                {/* Preferred Date & Service Required */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  <div>
-                    <label className="block text-2xs font-bold uppercase tracking-wider text-[#111827] mb-1">
-                      Preferred Consultation Date
-                    </label>
-                    <input
-                      type="date"
-                      name="preferred-date"
-                      value={formData.preferredDate}
-                      onChange={e => setFormData({ ...formData, preferredDate: e.target.value })}
-                      className="w-full px-3.5 py-2.5 bg-[#F8FAFC] border border-[#E5E7EB] rounded-xl text-xs text-[#111827] focus:bg-white focus:outline-hidden focus:border-[#0A2E5C]"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-2xs font-bold uppercase tracking-wider text-[#111827] mb-1">
-                      Service Required *
-                    </label>
-                    <select
-                      name="service-required"
-                      required
-                      value={formData.serviceRequired}
-                      onChange={e => setFormData({ ...formData, serviceRequired: e.target.value })}
-                      className="w-full px-3.5 py-2.5 bg-[#F8FAFC] border border-[#E5E7EB] rounded-xl text-xs text-[#111827] focus:bg-white focus:outline-hidden focus:border-[#0A2E5C]"
-                    >
-                      <option value="" disabled>Select a service...</option>
-                      {SERVICE_OPTIONS.map(s => (
-                        <option key={s} value={s}>{s}</option>
-                      ))}
-                    </select>
-                  </div>
+                {/* Service Required */}
+                <div>
+                  <label className="block text-2xs font-bold uppercase tracking-wider text-[#111827] mb-1">
+                    Service Required *
+                  </label>
+                  <select
+                    name="service-required"
+                    required
+                    value={formData.serviceRequired}
+                    onChange={e => setFormData({ ...formData, serviceRequired: e.target.value })}
+                    className="w-full px-3.5 py-2.5 bg-[#F8FAFC] border border-[#E5E7EB] rounded-xl text-xs text-[#111827] focus:bg-white focus:outline-hidden focus:border-[#0A2E5C]"
+                  >
+                    <option value="" disabled>Select a service...</option>
+                    {SERVICE_OPTIONS.map(s => (
+                      <option key={s} value={s}>{s}</option>
+                    ))}
+                  </select>
                 </div>
 
                 {/* Optional Message */}
@@ -291,19 +256,12 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
                   />
                 </div>
 
-                {error && (
-                  <p className="text-xs text-red-600 bg-red-50 border border-red-200 rounded-xl px-3.5 py-2.5">
-                    {error}
-                  </p>
-                )}
-
                 <button
                   type="submit"
-                  disabled={submitting}
-                  className="w-full py-3.5 bg-[#C9962C] hover:bg-[#b08223] disabled:opacity-70 text-white font-bold text-xs rounded-xl shadow-md flex items-center justify-center gap-2 cursor-pointer transition-transform hover:-translate-y-0.5"
+                  className="w-full py-3.5 bg-[#C9962C] hover:bg-[#b08223] text-white font-bold text-xs rounded-xl shadow-md flex items-center justify-center gap-2 cursor-pointer transition-transform hover:-translate-y-0.5"
                 >
-                  <span>{submitting ? 'Submitting...' : 'Confirm Consultation Request'}</span>
-                  {!submitting && <ArrowRight className="w-4 h-4" />}
+                  <span>Confirm Consultation Request</span>
+                  <ArrowRight className="w-4 h-4" />
                 </button>
               </div>
             </form>

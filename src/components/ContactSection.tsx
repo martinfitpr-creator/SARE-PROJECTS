@@ -21,15 +21,8 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ initialService =
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setLoading(true);
-
-    // Simulate swift server validation
-    setTimeout(() => {
-      setLoading(false);
-      setSubmitted(true);
-    }, 600);
+  const handleSubmit = () => {
+    setSubmitted(true);
   };
 
   return (
@@ -166,7 +159,16 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ initialService =
                 </button>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form
+                name="contact-section"
+                method="POST"
+                action="/"
+                target="netlify-hidden-iframe"
+                data-netlify="true"
+                onSubmit={handleSubmit}
+                className="space-y-6"
+              >
+                <input type="hidden" name="form-name" value="contact-section" />
                 <div>
                   <h3 className="text-2xl font-heading font-bold text-[#111827] mb-1">
                     Send a Message
@@ -184,6 +186,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ initialService =
                     </label>
                     <input
                       type="text"
+                      name="name"
                       required
                       placeholder="e.g. Dr. Nkululeko Mthembu"
                       value={formData.fullName}
@@ -199,6 +202,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ initialService =
                     </label>
                     <input
                       type="email"
+                      name="email"
                       required
                       placeholder="e.g. director@organization.org.za"
                       value={formData.email}
@@ -216,6 +220,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ initialService =
                     </label>
                     <input
                       type="tel"
+                      name="phone"
                       placeholder="e.g. 071 000 0000"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
@@ -230,6 +235,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ initialService =
                     </label>
                     <input
                       type="text"
+                      name="organization"
                       placeholder="e.g. NGO Trust / University"
                       value={formData.organization}
                       onChange={(e) => setFormData({ ...formData, organization: e.target.value })}
@@ -244,17 +250,18 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ initialService =
                     Primary Practice Area *
                   </label>
                   <select
+                    name="service-needed"
                     value={formData.serviceNeeded}
                     onChange={(e) => setFormData({ ...formData, serviceNeeded: e.target.value })}
                     className="w-full px-4 py-3.5 bg-white border border-[#E5E7EB] rounded-xl text-sm text-[#111827] focus:outline-hidden focus:border-[#0A2E5C] focus:ring-1 focus:ring-[#0A2E5C]"
                   >
                     <option value="Business Compliance Services">Business Compliance Services (CIPC / Tax)</option>
-                    <option value="Research Support Services">Research Support Services (Fieldwork / Transcripts)</option>
-                    <option value="Proposal & Donor Support Consulting">Proposal & Donor Support Consulting</option>
+                    <option value="Research &amp; Transcription Support Services">Research &amp; Transcription Support Services</option>
+                    <option value="Proposal &amp; Donor Support Consulting">Proposal &amp; Donor Support Consulting</option>
                     <option value="Virtual Executive Assistant Services">Virtual Executive Assistant Services</option>
                     <option value="Translation Services">Translation Services (SA Official Languages)</option>
                     <option value="Qualitative Data Analysis Support">Qualitative Data Analysis Support (NVivo)</option>
-                    <option value="Community Engagement & Fieldwork Coordination">Community Engagement & Fieldwork</option>
+                    <option value="Community Engagement &amp; Fieldwork Coordination">Community Engagement &amp; Fieldwork</option>
                     <option value="Custom Retainer / Other">Custom Retainer / Comprehensive Package</option>
                   </select>
                 </div>
@@ -265,6 +272,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ initialService =
                     Scope Details / Notes
                   </label>
                   <textarea
+                    name="message"
                     rows={4}
                     placeholder="Briefly describe your statutory deadline, research project scope, or administrative goals..."
                     value={formData.message}
@@ -276,17 +284,10 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ initialService =
                 {/* Gold Submit Button */}
                 <button
                   type="submit"
-                  disabled={loading}
-                  className="w-full py-4 bg-[#C9962C] hover:bg-[#b08223] text-white font-bold text-base rounded-xl shadow-md transition-all duration-200 transform hover:-translate-y-0.5 flex items-center justify-center gap-2.5 cursor-pointer disabled:opacity-70"
+                  className="w-full py-4 bg-[#C9962C] hover:bg-[#b08223] text-white font-bold text-base rounded-xl shadow-md transition-all duration-200 transform hover:-translate-y-0.5 flex items-center justify-center gap-2.5 cursor-pointer"
                 >
-                  {loading ? (
-                    <span>Transmitting Inquiry...</span>
-                  ) : (
-                    <>
-                      <span>Submit Inquiry</span>
-                      <Send className="w-4 h-4" />
-                    </>
-                  )}
+                  <span>Submit Inquiry</span>
+                  <Send className="w-4 h-4" />
                 </button>
               </form>
             )}

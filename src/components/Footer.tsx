@@ -155,8 +155,13 @@ export const Footer: React.FC<FooterProps> = ({ onNavigatePage }) => {
 
         {/* Bottom Bar: Copyright & Socials */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/60">
-          <div>
-            © {new Date().getFullYear()} SARE Projects Solutions. All rights reserved.
+          <div className="space-y-2">
+            <div>
+              © {new Date().getFullYear()} SARE Projects Solutions. All rights reserved.
+            </div>
+            <p className="text-[10px] text-white/40 leading-relaxed max-w-2xl">
+              Disclaimer: SARE Projects Solutions is an independent professional services firm. We are not affiliated with the Companies and Intellectual Property Commission (CIPC), the South African Revenue Service (SARS), or any government department, agency, or official body. All filings are processed on a best-effort basis using information supplied by clients.
+            </p>
           </div>
 
           {/* Social Icons */}

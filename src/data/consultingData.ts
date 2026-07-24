@@ -12,7 +12,7 @@ export const COMPANY_INFO = {
     name: "Regina Rikhotso",
     title: "Director & Founder",
     bio: "Regina Rikhotso is a distinguished South African executive and consulting leader with over 15 years of hands-on expertise in compliance management, donor relations, development research, and organizational governance. We founded SARE Projects Solutions to bridge the strategic operational gap for NGOs, public institutions, donor agencies, and researchers seeking reliable, outcome-driven administrative and compliance support.",
-    quote: "We help organizations focus on their core mission while we handle the critical operational, research, and regulatory details that guarantee long-term success."
+    quote: "We help organizations focus on their core mission while we handle the critical operational, research, and regulatory details that support long-term success."
   },
   contact: {
     phone: "071 950 6936",
@@ -40,7 +40,7 @@ export const SERVICES: ServiceItem[] = [
     shortDesc: "End-to-end statutory compliance, CIPC filings, beneficial ownership registries, and tax returns.",
     fullDesc: "Navigating South African regulatory frameworks can be complex and time-consuming. SARE Projects Solutions provides complete end-to-end statutory compliance management for businesses, NPOs, and social enterprises. We ensure your entity maintains active CIPC standing, meets SARS tax mandates, and strictly adheres to governance requirements.",
     benefits: [
-      "100% CIPC & statutory compliance guarantee",
+      "Rigorous CIPC & statutory compliance management",
       "Avoid costly penalties and deregistration risks",
       "Streamlined Beneficial Ownership filing",
       "Seamless annual returns & SARS tax clearance"
@@ -300,7 +300,7 @@ export const WHY_CHOOSE_US = [
     explanation: "Deep technical familiarity with international donor funding mandates, CIPC filing procedures, SARS regulations, and ethics approvals."
   },
   {
-    title: "Confidentiality & Professionalism Guaranteed",
+    title: "Confidentiality & Professionalism Assured",
     explanation: "Strict non-disclosure commitments, bank-grade file protection, and adherence to academic and statutory ethical standards."
   },
   {

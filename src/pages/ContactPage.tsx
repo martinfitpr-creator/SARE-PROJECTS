@@ -39,8 +39,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({
 
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = () => {
     setSubmitted(true);
   };
 
@@ -198,14 +197,22 @@ export const ContactPage: React.FC<ContactPageProps> = ({
                     Submit Another Inquiry
                   </button>
                 </div>
-              ) : (
-                <form onSubmit={handleSubmit} className="space-y-5">
+                <form
+                  name="contact-page"
+                  method="POST"
+                  action="/"
+                  target="netlify-hidden-iframe"
+                  data-netlify="true"
+                  onSubmit={handleSubmit}
+                  className="space-y-5"
+                >
+                  <input type="hidden" name="form-name" value="contact-page" />
                   <div>
                     <h3 className="text-xl font-heading font-bold text-[#111827]">
                       Request Executive Consultation or Proposal
                     </h3>
                     <p className="text-xs text-[#6B7280]">
-                      Fill in your details below for direct response from Director Regina Rikhotso's team.
+                      Fill in your details below for direct response from Sare Projects Solutions team.
                     </p>
                   </div>
 
@@ -216,6 +223,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({
                       </label>
                       <input
                         type="text"
+                        name="name"
                         required
                         placeholder="e.g. Dr. Thabo Mokoena"
                         value={formData.name}
@@ -230,6 +238,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({
                       </label>
                       <input
                         type="email"
+                        name="email"
                         required
                         placeholder="thabo@organization.org"
                         value={formData.email}
@@ -246,6 +255,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({
                       </label>
                       <input
                         type="tel"
+                        name="phone"
                         required
                         placeholder="e.g. 071 950 6936"
                         value={formData.phone}
@@ -260,6 +270,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({
                       </label>
                       <input
                         type="text"
+                        name="organization"
                         placeholder="Organization Name"
                         value={formData.organization}
                         onChange={(e) => setFormData({ ...formData, organization: e.target.value })}
@@ -274,6 +285,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({
                         Primary Service Required
                       </label>
                       <select
+                        name="service-interest"
                         value={formData.serviceInterest}
                         onChange={(e) => setFormData({ ...formData, serviceInterest: e.target.value })}
                         className="w-full px-3.5 py-2.5 bg-[#F8FAFC] border border-[#E5E7EB] rounded-xl text-xs text-[#111827] focus:bg-white focus:outline-hidden focus:border-[#0A2E5C]"
@@ -292,6 +304,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({
                       </label>
                       <input
                         type="date"
+                        name="preferred-date"
                         value={formData.preferredDate}
                         onChange={(e) => setFormData({ ...formData, preferredDate: e.target.value })}
                         className="w-full px-3.5 py-2.5 bg-[#F8FAFC] border border-[#E5E7EB] rounded-xl text-xs text-[#111827] focus:bg-white focus:outline-hidden focus:border-[#0A2E5C]"
@@ -304,6 +317,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({
                       Scope Brief or Message
                     </label>
                     <textarea
+                      name="message"
                       rows={4}
                       placeholder="Please outline your statutory compliance requirements, qualitative research scope, transcription volume, or executive support needs..."
                       value={formData.message}

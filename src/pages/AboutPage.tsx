@@ -31,7 +31,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({
   onNavigatePage,
 }) => {
   return (
-    <div className="pb-20 bg-white">
+    <div className="bg-white">
       {/* Hero Header Banner */}
       <section className="bg-[#0A2E5C] text-white pt-28 sm:pt-32 pb-16 sm:pb-20 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#C9962C_1px,transparent_1px)] [background-size:16px_16px]"></div>
@@ -94,18 +94,15 @@ export const AboutPage: React.FC<AboutPageProps> = ({
               </div>
 
               <h2 className="text-2xl sm:text-3xl font-heading font-bold text-[#111827]">
-                Leadership That Drives Organisational Success
+                Meet Our Founder & Director
               </h2>
 
               <div className="space-y-4 text-sm sm:text-base text-[#4B5563] leading-relaxed">
                 <p>
-                  Regina Rikhotso is the Founder and Director of SARE Projects Solutions, bringing over 15 years of experience in compliance management, donor relations, research, governance, and organisational development.
+                  At the heart of SARE Projects Solutions is Regina Rikhotso, an experienced consulting professional dedicated to helping organisations overcome operational and compliance challenges.
                 </p>
                 <p>
-                  She partners with NGOs, government institutions, donor-funded organisations, and private sector clients to strengthen operations, improve compliance, and deliver practical solutions that create measurable impact.
-                </p>
-                <p>
-                  Her leadership is built on professionalism, integrity, and a commitment to helping organisations achieve strategic growth.
+                  With extensive expertise across governance, donor compliance, research administration, and strategic consulting, Regina has successfully supported organisations in building stronger systems, improving accountability, and achieving long-term success.
                 </p>
               </div>
 

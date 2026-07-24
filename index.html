@@ -54,13 +54,12 @@
     </script>
   </head>
   <body class="bg-white text-[#111827] font-sans antialiased selection:bg-[#C9962C]/20 selection:text-[#0A2E5C]">
-    <!-- Hidden Netlify Form (required for build-time detection with React SPA) -->
+    <!-- Hidden Netlify Forms (required for build-time detection with React SPA) -->
     <form name="consultation" netlify data-netlify="true" hidden>
       <input type="hidden" name="form-name" value="consultation" />
       <input type="text" name="name" />
       <input type="email" name="email" />
       <input type="tel" name="phone" />
-      <input type="date" name="preferred-date" />
       <select name="service-required">
         <option>Business Compliance Services</option>
         <option>Research &amp; Transcription Support Services</option>
@@ -73,6 +72,46 @@
       </select>
       <textarea name="message"></textarea>
     </form>
+
+    <form name="contact-page" netlify data-netlify="true" hidden>
+      <input type="hidden" name="form-name" value="contact-page" />
+      <input type="text" name="name" />
+      <input type="email" name="email" />
+      <input type="tel" name="phone" />
+      <input type="text" name="organization" />
+      <select name="service-interest">
+        <option>Business Compliance Services</option>
+        <option>Research &amp; Transcription Support Services</option>
+        <option>Proposal &amp; Donor Support Consulting</option>
+        <option>Virtual Executive Assistant Services</option>
+        <option>Translation Services</option>
+        <option>Qualitative Data Analysis Support</option>
+        <option>Community Engagement &amp; Fieldwork Coordination</option>
+      </select>
+      <input type="date" name="preferred-date" />
+      <textarea name="message"></textarea>
+    </form>
+
+    <form name="contact-section" netlify data-netlify="true" hidden>
+      <input type="hidden" name="form-name" value="contact-section" />
+      <input type="text" name="name" />
+      <input type="email" name="email" />
+      <input type="tel" name="phone" />
+      <input type="text" name="organization" />
+      <select name="service-needed">
+        <option>Business Compliance Services</option>
+        <option>Research &amp; Transcription Support Services</option>
+        <option>Proposal &amp; Donor Support Consulting</option>
+        <option>Virtual Executive Assistant Services</option>
+        <option>Translation Services</option>
+        <option>Qualitative Data Analysis Support</option>
+        <option>Community Engagement &amp; Fieldwork Coordination</option>
+      </select>
+      <textarea name="message"></textarea>
+    </form>
+
+    <!-- Hidden Iframe to catch standard HTML POST form submissions without page reload -->
+    <iframe name="netlify-hidden-iframe" style="display: none;" class="hidden"></iframe>
 
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>

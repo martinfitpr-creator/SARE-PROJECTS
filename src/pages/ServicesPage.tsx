@@ -16,7 +16,7 @@ import {
   Search,
   X
 } from 'lucide-react';
-import { SERVICES } from '../data/consultingData';
+import { SERVICES, COMPANY_INFO } from '../data/consultingData';
 import { ServiceItem } from '../types';
 
 interface ServicesPageProps {
@@ -57,7 +57,12 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({
   return (
     <div className="pb-20 bg-[#F8FAFC]">
       {/* Header Banner */}
-      <section className="bg-[#0A2E5C] text-white pt-28 sm:pt-32 pb-16 sm:pb-20 relative overflow-hidden">
+      <section 
+        className="text-white pt-20 sm:pt-24 pb-8 sm:pb-10 relative overflow-hidden bg-cover bg-center"
+        style={{ backgroundImage: `url(${COMPANY_INFO.images.hero})` }}
+      >
+        {/* Dark overlay */}
+        <div className="absolute inset-0 bg-[#0A2E5C]/90 z-0"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-3xl">
             <span className="px-3.5 py-1 rounded-full bg-[#C9962C]/20 border border-[#C9962C]/40 text-[#C9962C] text-xs font-bold uppercase tracking-wider mb-4 inline-block">
