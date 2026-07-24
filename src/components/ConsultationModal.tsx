@@ -120,8 +120,8 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
                     <WhatsAppIcon className="w-4 h-4 text-white" />
                   </div>
                   <div>
-                    <div className="text-2xs font-bold text-[#111827]">Prefer Instant Messaging?</div>
-                    <div className="text-3xs text-[#4B5563]">Chat directly with Director Regina Rikhotso</div>
+                    <div className="font-bold text-[#111827] text-sm mb-0.5">Prefer Instant Messaging?</div>
+                    <div className="text-3xs text-[#4B5563]">Chat directly with the SARE Projects Team</div>
                   </div>
                 </div>
 

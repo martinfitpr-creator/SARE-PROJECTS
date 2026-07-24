@@ -103,16 +103,11 @@ export const ContactPage: React.FC<ContactPageProps> = ({
                   </span>
                 </div>
                 <div>
-                  <div className="text-2xs font-bold uppercase tracking-wider text-[#128C7E]">
-                    Direct Instant Channel
-                  </div>
-                  <div className="text-lg font-heading font-bold text-[#111827]">
-                    071 950 6936
+                  <div className="font-bold text-lg text-[#111827]">Prefer WhatsApp?</div>
+                  <div className="text-xs text-[#4B5563] mt-1 pr-4">
+                    Chat directly with the SARE Projects Team for fast responses on statutory filings & research scope.
                   </div>
                 </div>
-                <p className="text-2xs text-[#4B5563]">
-                  Chat directly with Director Regina Rikhotso for fast responses on statutory filings & research scope.
-                </p>
                 <a
                   href={COMPANY_INFO.contact.whatsappLink}
                   target="_blank"
