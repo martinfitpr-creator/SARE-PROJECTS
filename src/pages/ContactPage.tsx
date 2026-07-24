@@ -280,37 +280,22 @@ export const ContactPage: React.FC<ContactPageProps> = ({
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-2xs font-bold uppercase tracking-wider text-[#111827] mb-1">
-                        Primary Service Required
-                      </label>
-                      <select
-                        name="service-interest"
-                        value={formData.serviceInterest}
-                        onChange={(e) => setFormData({ ...formData, serviceInterest: e.target.value })}
-                        className="w-full px-3.5 py-2.5 bg-[#F8FAFC] border border-[#E5E7EB] rounded-xl text-xs text-[#111827] focus:bg-white focus:outline-hidden focus:border-[#0A2E5C]"
-                      >
-                        {SERVICES.map((s) => (
-                          <option key={s.id} value={s.title}>
-                            {s.title}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-
-                    <div>
-                      <label className="block text-2xs font-bold uppercase tracking-wider text-[#111827] mb-1">
-                        Preferred Date (Optional)
-                      </label>
-                      <input
-                        type="date"
-                        name="preferred-date"
-                        value={formData.preferredDate}
-                        onChange={(e) => setFormData({ ...formData, preferredDate: e.target.value })}
-                        className="w-full px-3.5 py-2.5 bg-[#F8FAFC] border border-[#E5E7EB] rounded-xl text-xs text-[#111827] focus:bg-white focus:outline-hidden focus:border-[#0A2E5C]"
-                      />
-                    </div>
+                  <div>
+                    <label className="block text-2xs font-bold uppercase tracking-wider text-[#111827] mb-1">
+                      Primary Service Required
+                    </label>
+                    <select
+                      name="service-interest"
+                      value={formData.serviceInterest}
+                      onChange={(e) => setFormData({ ...formData, serviceInterest: e.target.value })}
+                      className="w-full px-3.5 py-2.5 bg-[#F8FAFC] border border-[#E5E7EB] rounded-xl text-xs text-[#111827] focus:bg-white focus:outline-hidden focus:border-[#0A2E5C]"
+                    >
+                      {SERVICES.map((s) => (
+                        <option key={s.id} value={s.title}>
+                          {s.title}
+                        </option>
+                      ))}
+                    </select>
                   </div>
 
                   <div>
