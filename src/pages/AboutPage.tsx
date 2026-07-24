@@ -94,12 +94,20 @@ export const AboutPage: React.FC<AboutPageProps> = ({
               </div>
 
               <h2 className="text-2xl sm:text-3xl font-heading font-bold text-[#111827]">
-                Meet Regina Rikhotso
+                Leadership That Drives Organisational Success
               </h2>
 
-              <p className="text-sm sm:text-base text-[#4B5563] leading-relaxed">
-                {COMPANY_INFO.director.bio}
-              </p>
+              <div className="space-y-4 text-sm sm:text-base text-[#4B5563] leading-relaxed">
+                <p>
+                  Regina Rikhotso is the Founder and Director of SARE Projects Solutions, bringing over 15 years of experience in compliance management, donor relations, research, governance, and organisational development.
+                </p>
+                <p>
+                  She partners with NGOs, government institutions, donor-funded organisations, and private sector clients to strengthen operations, improve compliance, and deliver practical solutions that create measurable impact.
+                </p>
+                <p>
+                  Her leadership is built on professionalism, integrity, and a commitment to helping organisations achieve strategic growth.
+                </p>
+              </div>
 
               {/* Director Quote Card */}
               <div className="p-6 rounded-2xl bg-[#0A2E5C] text-white space-y-3 relative overflow-hidden border-l-4 border-[#C9962C]">
