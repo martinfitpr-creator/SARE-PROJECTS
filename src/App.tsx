@@ -20,7 +20,7 @@ export default function App() {
   useEffect(() => {
     const handleHashChange = () => {
       const hash = window.location.hash.replace('#', '');
-      const validPages = ['home', 'about', 'services', 'industries', 'why-us', 'contact'];
+      const validPages = ['home', 'about', 'services', 'industries', 'contact'];
       if (validPages.includes(hash)) {
         setCurrentPage(hash);
       } else if (!hash) {
@@ -85,12 +85,7 @@ export default function App() {
             />
           )}
 
-          {currentPage === 'why-us' && (
-            <WhyUsPage
-              onBookConsultation={() => handleOpenBooking()}
-              onNavigatePage={handleNavigatePage}
-            />
-          )}
+
 
           {currentPage === 'contact' && (
             <ContactPage

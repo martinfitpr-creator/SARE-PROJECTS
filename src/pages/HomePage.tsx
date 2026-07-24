@@ -2,8 +2,6 @@ import React from 'react';
 import { Hero } from '../components/Hero';
 import { Services } from '../components/Services';
 import { Industries } from '../components/Industries';
-import { WhyChooseUs } from '../components/WhyChooseUs';
-import { ProcessTimeline } from '../components/ProcessTimeline';
 import { Statistics } from '../components/Statistics';
 import { Testimonials } from '../components/Testimonials';
 import { FAQ } from '../components/FAQ';
@@ -32,16 +30,8 @@ export const HomePage: React.FC<HomePageProps> = ({
       {/* Services Section */}
       <Services onBookConsultation={onBookConsultation} />
 
-
-
       {/* Industries Served */}
       <Industries />
-
-      {/* Why Choose Us */}
-      <WhyChooseUs />
-
-      {/* Engagement Process Timeline */}
-      <ProcessTimeline />
 
       {/* Animated Statistics */}
       <Statistics />

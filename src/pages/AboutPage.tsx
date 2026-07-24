@@ -125,10 +125,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({
                   <CheckCircle2 className="w-4 h-4 text-[#C9962C]" />
                   <span>Grant Proposals</span>
                 </div>
-                <div className="p-3 bg-white rounded-xl border border-[#E5E7EB] text-xs font-semibold text-[#111827] flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-[#C9962C]" />
-                  <span>NVivo Data Coding</span>
-                </div>
+
                 <div className="p-3 bg-white rounded-xl border border-[#E5E7EB] text-xs font-semibold text-[#111827] flex items-center gap-2">
                   <CheckCircle2 className="w-4 h-4 text-[#C9962C]" />
                   <span>Board Minute Taking</span>
