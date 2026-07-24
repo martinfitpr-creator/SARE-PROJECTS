@@ -1,3 +1,6 @@
+import logoImg from '../assets/images/logo_white_bg.png';
+import directorImg from '../assets/images/regina_new.png';
+import heroImg from '../assets/images/consulting_hero_1784895749201.jpg';
 import { ServiceItem, IndustryItem, TestimonialItem, FAQItem, ValueItem, ProcessStep } from '../types';
 
 export const COMPANY_INFO = {
@@ -21,9 +24,9 @@ export const COMPANY_INFO = {
     hours: "Monday – Friday: 08:00 – 17:00 SAST"
   },
   images: {
-    logo: "/src/assets/images/logo_white_bg.png",
-    director: "/src/assets/images/regina_new.png",
-    hero: "/src/assets/images/consulting_hero_1784895749201.jpg"
+    logo: logoImg,
+    director: directorImg,
+    hero: heroImg
   }
 };
 

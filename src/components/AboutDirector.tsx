@@ -43,6 +43,7 @@ export const AboutDirector: React.FC = () => {
                 <img
                   src={COMPANY_INFO.images.director}
                   alt="Director Regina Rikhotso"
+                  loading="lazy"
                   className="w-full h-full object-cover object-center transition-transform duration-700 hover:scale-103"
                   referrerPolicy="no-referrer"
                 />

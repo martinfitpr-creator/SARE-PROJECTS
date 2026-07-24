@@ -31,6 +31,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigatePage }) => {
               <img
                 src="/src/assets/images/logo_dark_bg.png"
                 alt="SARE Projects Solutions Logo"
+                loading="lazy"
                 className="h-16 w-auto object-contain mix-blend-lighten opacity-95 hover:opacity-100 transition-opacity"
               />
             </button>

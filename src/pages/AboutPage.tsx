@@ -61,6 +61,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({
                 <img
                   src={directorImg}
                   alt={COMPANY_INFO.director.name}
+                  loading="lazy"
                   className="w-full h-auto object-cover max-h-[520px]"
                 />
                 <div className="absolute inset-0 bg-linear-to-t from-[#0A2E5C]/90 via-[#0A2E5C]/30 to-transparent flex flex-col justify-end p-5 sm:p-6 text-white">
