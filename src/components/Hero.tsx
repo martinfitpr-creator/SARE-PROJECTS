@@ -104,7 +104,7 @@ export const Hero: React.FC<HeroProps> = ({
           <span className="text-[#C9962C] font-extrabold">
             Compliance
           </span>
-          , Research & Sustainable Growth.
+          , Research & Strategic Growth.
         </motion.h1>
 
         {/* Subtitle Paragraph */}

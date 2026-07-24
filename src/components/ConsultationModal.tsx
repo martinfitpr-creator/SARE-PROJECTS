@@ -13,7 +13,7 @@ interface ConsultationModalProps {
 
 const SERVICE_OPTIONS = [
   'Business Compliance Services',
-  'Research Support Services',
+  'Research & Transcription Support Services',
   'Proposal & Donor Support Consulting',
   'Virtual Executive Assistant Services',
   'Translation Services',

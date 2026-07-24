@@ -6,11 +6,12 @@ import { ServiceItem, IndustryItem, TestimonialItem, FAQItem, ValueItem, Process
 export const COMPANY_INFO = {
   name: "SARE Projects Solutions",
   tagline: "Your Partner in Compliance, Research and Sustainable Impact",
-  slogan: "Empowering Organizations Through Compliance, Research & Sustainable Growth",
+  slogan: "Empowering Organizations Through Compliance, Research & Strategic Growth",
+  description: "SARE Projects Solutions provides comprehensive business, research, compliance and administrative solutions tailored to help organisations grow.",
   director: {
     name: "Regina Rikhotso",
     title: "Director & Founder",
-    bio: "Regina Rikhotso is a distinguished South African executive and consulting leader with over 15 years of hands-on expertise in compliance management, donor relations, development research, and organizational governance. She founded SARE Projects Solutions to bridge the strategic operational gap for NGOs, public institutions, donor agencies, and researchers seeking reliable, outcome-driven administrative and compliance support.",
+    bio: "Regina Rikhotso is a distinguished South African executive and consulting leader with over 15 years of hands-on expertise in compliance management, donor relations, development research, and organizational governance. We founded SARE Projects Solutions to bridge the strategic operational gap for NGOs, public institutions, donor agencies, and researchers seeking reliable, outcome-driven administrative and compliance support.",
     quote: "We help organizations focus on their core mission while we handle the critical operational, research, and regulatory details that guarantee long-term success."
   },
   contact: {
@@ -56,19 +57,19 @@ export const SERVICES: ServiceItem[] = [
 
   {
     id: "research-support",
-    title: "Research Support Services",
+    title: "Research & Transcription Support Services",
     category: "Research & Fieldwork",
     iconName: "FileSpreadsheet",
-    shortDesc: "Comprehensive fieldwork support, transcription, focus group moderation, participant recruitment, and data quality checks.",
-    fullDesc: "High-impact research relies on rigorous field execution and meticulous data handling. We support academic institutions, development agencies, and independent researchers with end-to-end qualitative and quantitative research assistance across urban and rural South African communities.",
+    shortDesc: "Professional audio/video transcription, translation, focus group moderation, participant recruitment, and fieldwork assistance.",
+    fullDesc: "High-impact research relies on rigorous field execution, verbatim data formatting, and meticulous handling. We support academic institutions, development agencies, and independent researchers with professional transcription and research field execution across South Africa.",
     benefits: [
+      "Fast turnaround on verbatim transcriptions",
       "Rigorous data quality verification & protocols",
       "Multilingual field researchers and moderators",
-      "Fast turnaround on verbatim transcriptions",
       "Complete ethical compliance & consent management"
     ],
     deliverables: [
-      "Transcription & Translation",
+      "Verbatim Transcription & Translation",
       "Interview Moderation & FGD Note-Taking",
       "Research Assistant Support",
       "Participant Recruitment",
