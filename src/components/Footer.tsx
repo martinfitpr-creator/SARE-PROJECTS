@@ -75,11 +75,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigatePage }) => {
                   Why Choose SARE Projects
                 </button>
               </li>
-              <li>
-                <button onClick={() => handlePageClick('resources')} className="hover:text-[#C9962C] transition-colors cursor-pointer">
-                  Resources & FAQs
-                </button>
-              </li>
+
               <li>
                 <button onClick={() => handlePageClick('contact')} className="hover:text-[#C9962C] transition-colors cursor-pointer">
                   Contact & Bookings

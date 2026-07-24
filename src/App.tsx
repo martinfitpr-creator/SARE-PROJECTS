@@ -6,7 +6,6 @@ import { AboutPage } from './pages/AboutPage';
 import { ServicesPage } from './pages/ServicesPage';
 import { IndustriesPage } from './pages/IndustriesPage';
 import { WhyUsPage } from './pages/WhyUsPage';
-import { ResourcesPage } from './pages/ResourcesPage';
 import { ContactPage } from './pages/ContactPage';
 import { ConsultationModal } from './components/ConsultationModal';
 import { WhatsAppWidget } from './components/WhatsAppWidget';
@@ -21,7 +20,7 @@ export default function App() {
   useEffect(() => {
     const handleHashChange = () => {
       const hash = window.location.hash.replace('#', '');
-      const validPages = ['home', 'about', 'services', 'industries', 'why-us', 'resources', 'contact'];
+      const validPages = ['home', 'about', 'services', 'industries', 'why-us', 'contact'];
       if (validPages.includes(hash)) {
         setCurrentPage(hash);
       } else if (!hash) {
@@ -89,13 +88,6 @@ export default function App() {
           {currentPage === 'why-us' && (
             <WhyUsPage
               onBookConsultation={() => handleOpenBooking()}
-              onNavigatePage={handleNavigatePage}
-            />
-          )}
-
-          {currentPage === 'resources' && (
-            <ResourcesPage
-              onBookConsultation={handleOpenBooking}
               onNavigatePage={handleNavigatePage}
             />
           )}
