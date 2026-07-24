@@ -18,7 +18,7 @@ export const COMPANY_INFO = {
     phoneDisplay: "071 950 6936",
     phoneTel: "+27719506936",
     whatsapp: "+27719506936",
-    whatsappLink: "https://wa.me/27719506936?text=Hello%20Sare%20Projects%20Solutions,%20I%20would%20like%20to%20inquire%20about%20your%20services.",
+    whatsappLink: "https://wa.me/27719506936?text=Good%20day,%20I%20would%20like%20to%20enquire%20about%20one%20of%20your%20services%20and%20discuss%20my%20requirements.%20Please%20let%20me%20know%20the%20next%20steps.%20Thank%20you.",
     emails: ["hlamisto@yahoo.com", "sareprojectssolutions@gmail.com"],
     location: "South Africa (Nationwide & Regional Service)",
     hours: "Monday – Friday: 08:00 – 17:00 SAST"

@@ -84,9 +84,7 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
   };
 
   const handleWhatsAppDirect = () => {
-    const text = `Hello Sare Projects Solutions,\n\nI would like to book a consultation regarding *${formData.serviceRequired || 'your services'}*.${
-      formData.message ? `\n\nAdditional details: ${formData.message}` : ''
-    }`;
+    const text = `Good day, I would like to enquire about one of your services and discuss my requirements. Please let me know the next steps. Thank you.`;
     window.open(`https://wa.me/27719506936?text=${encodeURIComponent(text)}`, '_blank', 'noopener,noreferrer');
   };
 
